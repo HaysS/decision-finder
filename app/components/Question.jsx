@@ -11,12 +11,14 @@ module.exports = React.createClass({
 					{
 						this.props.info.answers.map(function(answer, index) {
 							return(
-								<div className="form-group">
-									<input className="form-control col-lg-2 pull-left-lg" type="radio" 
-id={"answer"+index} name="answer" value={index} />
-									<label className="control-label col-lg-9 pull-right-lg" htmlFor={"answer" + index}>
-										{answer}
-									</label>
+								<div className="radio">
+									<div className="form-group">
+										<input className="" type="radio" 
+id={"answer"+(index+1)} name="answer" value={(index+1)} />
+										<label className="" htmlFor={"answer" + (index+1)}>
+											{answer}
+										</label>
+									</div>
 								</div>
 							)
 						})
