@@ -1,0 +1,29 @@
+{
+  "name": "mood-modulator",
+  "version": "1.0.0",
+  "description": "A site to help you figure out what you need to do, when you need to do it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaysS/mood-modulator.git"
+  },
+  "author": "E. Hays Stanford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaysS/mood-modulator/issues"
+  },
+  "homepage": "https://github.com/HaysS/mood-modulator#readme",
+  "dependencies": {
+    "browserify": "^13.1.0",
+    "express": "^4.14.0",
+    "guid": "0.0.12",
+    "gulp": "^3.9.1",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

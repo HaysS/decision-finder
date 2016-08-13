@@ -1,0 +1,20 @@
+{
+  "name": "mood-modulator",
+  "description": "A site to help you figure out what you need to do, when you need to do it.",
+  "main": "index.js",
+  "authors": [
+    "E. Hays Stanford"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/HaysS/mood-modulator",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css": "^3.3.6"
+  }
+}
