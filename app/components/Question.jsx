@@ -14,13 +14,20 @@ module.exports = React.createClass({
 	addSelectedAnswer:function(e) {
 		e.preventDefault();
 
+		var state = this.state;	
 		var questionNum = this.state.questionNum;
 
 		if(document.getElementById("question"+(questionNum)+"answer1").checked) {
-			var state = this.state;
 			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer1").value;
-			this.setState(state);
+		} else if(document.getElementById("question"+(questionNum)+"answer2").checked) {
+			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer2").value;
+		} else if(document.getElementById("question"+(questionNum)+"answer3").checked) {
+			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer3").value;
+		} else if(document.getElementById("question"+(questionNum)+"answer4").checked) {
+			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer4").value;
 		}
+
+		this.setState(state);
 		actions.addSelectedAnswer(this.state);	
 		console.log(this.state.selectedAnswer);
 	},
