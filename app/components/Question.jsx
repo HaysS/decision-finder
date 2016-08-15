@@ -43,13 +43,13 @@ module.exports = React.createClass({
 				</div>
 				<form className="form" onSubmit={this.addSelectedAnswer}> 
 					{
-						this.props.info.answers.map(function(answer, index) {
+						this.props.info.answers.map(function(answer, i) {
+							var id = ("question"+(questionNum)+"answer"+(i+1));
 							return(
-								<div className="radio">
-									<div className="form-group">
-										<input className="" type="radio"
-id={"question"+(questionNum)+"answer"+(index+1)} name="answer" value={"question"+(questionNum)+"answer"+(index+1)} />
-										<label className="" htmlFor={"question"+(questionNum)+"answer"+(index+1)}>
+								<div className="radio" key={id+"-radio"}>
+									<div className="form-group" key={id+"-form-group"}>
+										<input type="radio" key={id} id={id} name="answer" value={id} />
+										<label key={id+"-label"} htmlFor={id}>
 											{answer}
 										</label>
 									</div>
