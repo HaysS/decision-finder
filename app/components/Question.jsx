@@ -25,6 +25,8 @@ module.exports = React.createClass({
 			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer3").value;
 		} else if(document.getElementById("question"+(questionNum)+"answer4").checked) {
 			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer4").value;
+		} else {
+			return //Hit submit without selecting value
 		}
 
 		this.setState(state);

@@ -1,6 +1,6 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
-var QuestionList = require("./components/QuestionList.jsx");
+var Survey = require("./components/Survey.jsx");
 var questionStore = require("./stores/questionStore");
 
 var _questions = questionStore.getQuestions();
@@ -13,7 +13,7 @@ questionStore.onChange(function(questions, selectedAnswers) {
 })
 
 function render(){
-	ReactDOM.render(<QuestionList questions={_questions} />, document.getElementById("container"));
+	ReactDOM.render(<Survey questions={_questions} />, document.getElementById("container"));
 }
 
 render();
