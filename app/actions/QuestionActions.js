@@ -6,5 +6,11 @@ module.exports = {
 			question: question,
 			type: "question:addSelectedAnswer"
 		});
+	},
+	removeQuestion: function(question) {
+		dispatcher.dispatch({
+			question: question,
+			type: "question:removeQuestion"
+		});
 	}
 }

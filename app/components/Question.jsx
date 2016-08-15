@@ -8,7 +8,7 @@ module.exports = React.createClass({
 			question: this.props.info.question,
 			answers: [this.props.info.answer1, this.props.info.answer2, 
 						this.props.info.answer3, this.props.info.answer4],
-			selectedAnswer: ""
+			selectedAnswer: this.props.info.selectedAnswer
 		}
 	},
 	addSelectedAnswer:function(e) {
@@ -29,7 +29,7 @@ module.exports = React.createClass({
 
 		this.setState(state);
 		actions.addSelectedAnswer(this.state);	
-		console.log(this.state.selectedAnswer);
+		actions.removeQuestion(this.state);
 	},
 	render:function() {
 		var questionNum = this.state.questionNum;
