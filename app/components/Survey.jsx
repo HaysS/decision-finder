@@ -9,7 +9,9 @@ module.exports = React.createClass({
 			
 				</div>
 				<div className="col-lg-10">
-					<QuestionList info={this.props} key={"list1"} />
+					{this.props.questionLists.map(function(ql) {
+						return(<QuestionList info={ql} key={"list1"} />)
+					})}
 				</div>
 			</div>
 		)

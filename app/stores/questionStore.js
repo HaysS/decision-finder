@@ -2,7 +2,7 @@ var dispatcher = require("../dispatcher");
 
 function QuestionStore() {
 	var listeners = [];
-	var questions= [{questionNum: 1, question: "How are you feeling?", answers: ["Great", "Good", "Neutral", "Bad"], selectedAnswer: ""},
+	var questions = [{questionNum: 1, question: "How are you feeling?", answers: ["Great", "Good", "Neutral", "Bad"], selectedAnswer: ""},
 					{questionNum: 2, question: "How much have you exercised today?", answers: ["A lot", "Enough", "Not much", "None"], selectedAnswer: ""}];
 	var selectedAnswers = [];
 
