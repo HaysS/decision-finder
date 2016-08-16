@@ -27,15 +27,17 @@ function QuestionStore() {
 		triggerListeners();
 	}
 
-	function removeQuestion(question) {
-		var _index;
-		questions.map(function (q, index) {
-			if(q.questionNum === question.questionNum) {
-				_index = index;
+	function completeQuestion(_question) {
+		var _i;
+		questions.map(function (question, i) {
+			if(question.questionNum === _question.questionNum) {
+				_i = i;
+				completedQuestions.push(question);
 			}
 		});
-		questions.splice(_index, 1);
+		questions.splice(_i, 1);
 		triggerListeners();
+		console.log(completedQuestions[completedQuestions.length-1]);
 	}
 
 	function triggerListeners() {
@@ -51,8 +53,8 @@ function QuestionStore() {
 				case "addSelectedAnswer":
 					addSelectedAnswer(payload.question);
 					break;
-				case "removeQuestion":
-					removeQuestion(payload.question);
+				case "completeQuestion":
+					completeQuestion(payload.question);
 					break;
 			}
 		}

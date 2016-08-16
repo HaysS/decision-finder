@@ -31,7 +31,7 @@ module.exports = React.createClass({
 
 		this.setState(state);
 		actions.addSelectedAnswer(this.state);	
-		actions.removeQuestion(this.state);
+		actions.completeQuestion(this.state);
 	},
 	render:function() {
 		var questionNum = this.state.questionNum;

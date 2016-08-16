@@ -7,10 +7,10 @@ module.exports = {
 			type: "question:addSelectedAnswer"
 		});
 	},
-	removeQuestion: function(question) {
+	completeQuestion: function(question) {
 		dispatcher.dispatch({
 			question: question,
-			type: "question:removeQuestion"
+			type: "question:completeQuestion"
 		});
 	}
 }
