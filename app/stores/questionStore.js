@@ -4,24 +4,27 @@ function QuestionStore() {
 	var listeners = [];
 	var questions = [{questionNum: 1, question: "How are you feeling?", answers: ["Great", "Good", "Neutral", "Bad"], selectedAnswer: ""},
 					{questionNum: 2, question: "How much have you exercised today?", answers: ["A lot", "Enough", "Not much", "None"], selectedAnswer: ""}];
-	var selectedAnswers = [];
+	var completedQuestions = [];
 
 	function getQuestions() {
 		return questions;
 	}
 
-	function getSelectedAnswers() {
-		return selectedAnswers;
+	function getCompletedQuestions() {
+		return completedQuestions;
 	}
 
 	function onChange(listener) {
 		listeners.push(listener);
 	}
 
-	function addSelectedAnswer(selectedAnswer) {
-		selectedAnswers.push(selectedAnswer);
+	function addSelectedAnswer(_question) {
+		questions.forEach(function(question, i) {
+			if(question.questionNum ===_question.questionNum) {
+				question.selectedAnswer = _question.selectedAnswer;
+			}
+		})
 		triggerListeners();
-		console.log(selectedAnswer);
 	}
 
 	function removeQuestion(question) {
@@ -37,7 +40,7 @@ function QuestionStore() {
 
 	function triggerListeners() {
 		listeners.forEach(function(listener) {
-			listener(questions, selectedAnswers);
+			listener(questions);
 		});
 	}
 
@@ -46,7 +49,7 @@ function QuestionStore() {
 		if(split[0] === "question") {
 			switch(split[1]) {
 				case "addSelectedAnswer":
-					addSelectedAnswer(payload.question.selectedAnswer);
+					addSelectedAnswer(payload.question);
 					break;
 				case "removeQuestion":
 					removeQuestion(payload.question);
@@ -57,7 +60,7 @@ function QuestionStore() {
 
 	return {
 		getQuestions: getQuestions,
-		getSelectedAnswers: getSelectedAnswers,
+		getCompletedQuestions: getCompletedQuestions,
 		onChange: onChange
 	}
 }

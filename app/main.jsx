@@ -5,16 +5,16 @@ var questionStore = require("./stores/questionStore");
 var questionListStore = require("./stores/questionListStore");
 
 var _questions = questionStore.getQuestions();
-var _selectedAnswers = questionStore.getSelectedAnswers();
+var _completedQuestions = questionStore.getCompletedQuestions();
 
 questionListStore.updateQuestionsInList();	//Updates questions in the list to match questions in questionStore
 
 var _questionLists = questionListStore.getQuestionLists();
 var _completedQuestionLists = questionListStore.getCompletedQuestionLists();
 
-questionStore.onChange(function(questions, selectedAnswers) {
+questionStore.onChange(function(questions, completedQuestions) {
 	_questions = questions;
-	_selectedAnswers = selectedAnswers;
+	_completedQuestions = completedQuestions
 
 	questionListStore.updateQuestionsInList();
 

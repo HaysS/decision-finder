@@ -18,15 +18,15 @@ module.exports = React.createClass({
 		var questionNum = this.state.questionNum;
 
 		if(document.getElementById("question"+(questionNum)+"answer1").checked) {
-			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer1").value;
+			state.selectedAnswer = "answer1";
 		} else if(document.getElementById("question"+(questionNum)+"answer2").checked) {
-			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer2").value;
+			state.selectedAnswer = "answer2";
 		} else if(document.getElementById("question"+(questionNum)+"answer3").checked) {
-			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer3").value;
+			state.selectedAnswer = "answer3";
 		} else if(document.getElementById("question"+(questionNum)+"answer4").checked) {
-			state.selectedAnswer = document.getElementById("question"+(questionNum)+"answer4").value;
+			state.selectedAnswer = "answer4";
 		} else {
-			return //Hit submit without selecting value
+			return //User hit submit without selecting value
 		}
 
 		this.setState(state);
