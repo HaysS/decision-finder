@@ -15,12 +15,21 @@ function getQuestions(req, res) {
 }
 
 function addSelectedAnswer(req, res) {
-	var question = new Question(_.extend({}, req.body));
-	Question.save(function(err) {
+	Question.findOne({question: req.body.question}, function(err, question) {
 		if (err)
 			res.send(err);
-		else
-			res.json(question);
+
+		if (! question) 
+			res.json("no question found");
+		else {
+			question.selectedAnswer = req.body.selectedAnswer;
+			question.save(function(err) {
+				if (err)
+					res.json(err);
+
+				res.json("success saving question");
+			})
+		}
 	});
 }
 

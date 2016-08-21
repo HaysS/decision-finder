@@ -13,6 +13,7 @@ var questionController = require("./controllers/questionController");
 //Express request pipeline
 var app = express();
 app.use(express.static(path.join(__dirname,"../app/dist")));
+console.log(bodyParser.json());
 app.use(bodyParser.json());
 app.use("/api", questionController);
 

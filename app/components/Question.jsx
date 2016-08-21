@@ -6,9 +6,8 @@ module.exports = React.createClass({
 		return{
 			questionNum: this.props.info.questionNum,
 			question: this.props.info.question,
-			answers: [this.props.info.answer1, this.props.info.answer2, 
-						this.props.info.answer3, this.props.info.answer4],
-			selectedAnswer: this.props.info.selectedAnswer
+			answers: this.props.info.answers,
+			selectedAnswer: ""
 		}
 	},
 	addSelectedAnswer:function(e) {
@@ -31,7 +30,7 @@ module.exports = React.createClass({
 
 		this.setState(state);
 		actions.addSelectedAnswer(this.state);	
-		actions.completeQuestion(this.state);
+		//actions.completeQuestion(this.state);
 	},
 	render:function() {
 		var questionNum = this.state.questionNum;
@@ -40,8 +39,7 @@ module.exports = React.createClass({
 				<div className="page-header">
 					<h2>{this.props.info.question}</h2>
 				</div>
-				<form className="form" onSubmit="#"> 
-				{console.log(this.props.info.answers)}
+				<form className="form" onSubmit={this.addSelectedAnswer}> 
 					{
 						this.props.info.answers.map(function(answer, i) {
 							var id = ("question"+(questionNum)+"answer"+(i+1));
