@@ -1,10 +1,12 @@
 var fs = require("fs");
 var path = require("path");
 var Question = require("./questions");
+var CompletedQuestions = require("./completedQuestions");
 
 
 var initializeQuestionsInDB = function () {
-		Question.collection.remove({})
+		Question.collection.remove({});
+		CompletedQuestions.collection.remove({});
 
 		fs.readFile(path.join(__dirname, "../") + "./data/Questions.json", "utf8", function(err, data) {
 		if(err) {

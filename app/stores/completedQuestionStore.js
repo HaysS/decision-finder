@@ -1,38 +1,31 @@
 var dispatcher = require("../dispatcher");
 var questionService = require("../services/questionService");
-var completedQuestionStore = require("./completedQuestionStore");
+var completedQuestionService = require("../services/completedQuestionService");
 
 function QuestionStore() {
 	var listeners = [];
 
 	function onChange(listener) {
-		getQuestions(listener);
+		getCompletedQuestions(listener);
 		listeners.push(listener);
 	}
 
-	function getQuestions(cb) {
-		questionService.getQuestions().then(function(res) {
-			console.log("Questions: "+res);
+	function getCompletedQuestions(cb) {
+		completedQuestionService.getCompletedQuestions().then(function(res) {
+			console.log("CompletedQuestions: " + res);
 			cb(res);
 		});
 	}
 
-	function addSelectedAnswer(question) {
-		questionService.addSelectedAnswer(question).then(function (res) {
+	function addCompletedQuestion(question) {
+		completedQuestionService.addCompletedQuestion(question).then(function (res) {
 			console.log(res);
 			triggerListeners();
 		});
 	}
 
-	function deleteQuestion(question) {
-		questionService.deleteQuestion(question).then(function (res) {
-			console.log(res);
-			triggerListeners();
-		})
-	}
-
 	function triggerListeners() {
-		getQuestions(function (res) {
+		getCompletedQuestions(function (res) {
 				listeners.forEach(function(listener) {
 				listener(res);
 			});
@@ -43,11 +36,8 @@ function QuestionStore() {
 		var split = payload.type.split(":");
 		if(split[0] === "question") {
 			switch(split[1]) {
-				case "addSelectedAnswer":
-					addSelectedAnswer(payload.question);
-					break;
 				case "completeQuestion":
-					deleteQuestion(payload.question);
+					addCompletedQuestion(payload.question);
 					break;
 			}
 		}

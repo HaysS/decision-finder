@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 var Question = require("../data/questions");
-var _ = require("underscore");
 
 var router = require("express").Router();
 router.route("/questions/:id?").get(getQuestions).post(addSelectedAnswer).delete(completeQuestion);

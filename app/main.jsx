@@ -2,18 +2,23 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var Survey = require("./components/Survey.jsx");
 var questionStore = require("./stores/questionStore");
+var completedQuestionStore = require("./stores/completedQuestionStore");
 // var questionListStore = require("./stores/questionListStore");
 
 var _questions = [];
+var _completedQuestions = [];
 
 var getQuestionsCallback = function (questions) {
 	_questions = questions;
-
 	render();
 }
-questionStore.onChange(getQuestionsCallback);
+var getCompletedQuestionsCallback = function(completedQuestions) {
+	_completedQuestions = completedQuestions;
+	//Nothing to render since completed questions are hidden
+}
 
-var _completedQuestions = questionStore.getCompletedQuestions();
+questionStore.onChange(getQuestionsCallback);
+completedQuestionStore.onChange(getCompletedQuestionsCallback);
 
 // questionListStore.updateQuestionsInList();	//Updates questions in the list to match questions in questionStore
 
