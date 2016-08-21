@@ -9,9 +9,7 @@ module.exports = React.createClass({
 			
 				</div>
 				<div className="col-lg-10">
-					{this.props.questionLists.map(function(ql) {
-						return(<QuestionList info={ql} key={"list1"} />)
-					})}
+					<QuestionList info={this.props.info.questionLists} key={"list1"} />
 				</div>
 			</div>
 		)

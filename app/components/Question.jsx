@@ -35,13 +35,13 @@ module.exports = React.createClass({
 	},
 	render:function() {
 		var questionNum = this.state.questionNum;
-
 		return(
 			<div className="row">
 				<div className="page-header">
 					<h2>{this.props.info.question}</h2>
 				</div>
-				<form className="form" onSubmit={this.addSelectedAnswer}> 
+				<form className="form" onSubmit="#"> 
+				{console.log(this.props.info.answers)}
 					{
 						this.props.info.answers.map(function(answer, i) {
 							var id = ("question"+(questionNum)+"answer"+(i+1));

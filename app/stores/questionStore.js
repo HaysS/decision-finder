@@ -1,48 +1,45 @@
 var dispatcher = require("../dispatcher");
+var questionService = require("../services/questionService");
 
 function QuestionStore() {
 	var listeners = [];
-	var questions = [{questionNum: 1, question: "How are you feeling?", answers: ["Great", "Good", "Neutral", "Bad"], selectedAnswer: ""},
-					{questionNum: 2, question: "How much have you exercised today?", answers: ["A lot", "Enough", "Not much", "None"], selectedAnswer: ""}];
 	var completedQuestions = [];
 
-	function getQuestions() {
-		return questions;
+	function onChange(listener) {
+		getQuestions(listener);
+		listeners.push(listener);
+	}
+
+	function getQuestions(cb) {
+		questionService.getQuestions().then(function(res) {
+			console.log(res);
+			cb(res);
+		});
 	}
 
 	function getCompletedQuestions() {
 		return completedQuestions;
 	}
 
-	function onChange(listener) {
-		listeners.push(listener);
-	}
-
-	function addSelectedAnswer(_question) {
-		questions.forEach(function(question, i) {
-			if(question.questionNum ===_question.questionNum) {
-				question.selectedAnswer = _question.selectedAnswer;
-			}
-		})
-		triggerListeners();
-	}
-
-	function completeQuestion(_question) {
-		var _i;
-		questions.map(function (question, i) {
-			if(question.questionNum === _question.questionNum) {
-				_i = i;
-				completedQuestions.push(question);
-			}
+	function addSelectedAnswer(question) {
+		questionService.addSelectedAnswer(question).then(function (res) {
+			console.log(res);
+			triggerListeners();
 		});
-		questions.splice(_i, 1);
-		triggerListeners();
-		console.log(completedQuestions[completedQuestions.length-1]);
+	}
+
+	function completeQuestion(question) {
+		questionService.completeQuestion(question).then(function (res) {
+			console.log(res);
+			triggerListeners();
+		});
 	}
 
 	function triggerListeners() {
-		listeners.forEach(function(listener) {
-			listener(questions);
+		getQuestions(function (res) {
+				listeners.forEach(function(listener) {
+				listener(res);
+			});
 		});
 	}
 
@@ -61,7 +58,6 @@ function QuestionStore() {
 	});
 
 	return {
-		getQuestions: getQuestions,
 		getCompletedQuestions: getCompletedQuestions,
 		onChange: onChange
 	}

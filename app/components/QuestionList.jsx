@@ -4,12 +4,13 @@ var Question = require("./Question.jsx");
 module.exports = React.createClass({
 	render:function() {
 		var finishButton;
+		
 		if(this.props.info.questions.length == 0) {
 			finishButton = <button type="button" className="btn btn-primary btn-lg btn-block">Finish</button>
 		}
 
 		return(
-			<div>	
+			<div>
 			{
 				this.props.info.questions.map(function(q) {
 					return(
