@@ -1,0 +1,1 @@
+<?php include_once("./app/dist/index.html"); ?>

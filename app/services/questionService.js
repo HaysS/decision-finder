@@ -44,8 +44,6 @@ module.exports = {
 	},
 	initializeQuestions: function() {
 		var Promise = promise.Promise;
-		
-		console.log("alkfhalkdfjlka");
 		return new Promise(function (resolve, reject) {
 			$.ajax({
 				url: resourceUrl,
