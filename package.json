@@ -4,8 +4,7 @@
   "description": "A site to help you figure out what you need to do, when you need to do it.",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production MONGO_URL=yourMongoURL node index.js",
-    "build": "gulp",
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
