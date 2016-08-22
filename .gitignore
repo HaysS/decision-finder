@@ -1,7 +1,6 @@
 # Specific files related to project #
 #####################################
 node_modules
-app/lib
 
 # Compiled source #
 ###################
