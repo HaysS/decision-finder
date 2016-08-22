@@ -5,7 +5,6 @@ var path = require("path");
 
 //data initialization function
 var initializeQuestionsInDB = require("./data/initializeQuestionsInDB");
-initializeQuestionsInDB(); //populates the database with data from Questions.json
 
 //controllers
 var questionController = require("./controllers/questionController");
@@ -18,6 +17,12 @@ console.log(bodyParser.json());
 app.use(bodyParser.json());
 app.use("/api", questionController);
 app.use("/api", completedQuestionController);
+
+
+app.get("/*", function(req, res) {
+	initializeQuestionsInDB(); //populates the database with data from Questions.json
+	res.end();
+});
 
 app.listen(7777, function(){
 	console.log("Started listening on port", 7777);

@@ -23,8 +23,8 @@ function addSelectedAnswer(req, res) {
 		else {
 			question.selectedAnswer = req.body.selectedAnswer;
 			question.save(function(err) {
-				if (err)
-					res.json(err);
+				if (err) 
+					res.save(err);
 
 				res.json("success saving question");
 			})
