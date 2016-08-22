@@ -1,9 +1,10 @@
 var mongoose = require("mongoose");
-var CompletedQuestion = require("../data/completedQuestions");
 var _ = require("underscore");
+var CompletedQuestion = require("../data/completedQuestions");
+
 
 var router = require("express").Router();
-router.route("/completedQuestions/:id?").get(getCompletedQuestions).post(addCompletedQuestion).delete(deleteCompletedQuestion);
+router.route("/completedQuestions/:id?").get(getCompletedQuestions).post(addCompletedQuestion).delete(deleteCompletedQuestion).put(initializeCompletedQuestions);
 
 function getCompletedQuestions(req, res) {
 	CompletedQuestion.find(function (err, questions) {
@@ -31,6 +32,13 @@ function deleteCompletedQuestion(req, res) {
 			res.send(err);
 		else
 			res.json(removed);
+	});
+}
+
+function initializeCompletedQuestions(req, res) {
+	CompletedQuestion.remove({}, function(err) {
+		if(err)
+			res.json(err);
 	});
 }
 

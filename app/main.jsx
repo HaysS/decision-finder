@@ -17,6 +17,9 @@ var getCompletedQuestionsCallback = function(completedQuestions) {
 	//Nothing to render since completed questions are hidden
 }
 
+questionStore.initializeQuestions();
+completedQuestionStore.initializeCompletedQuestions();
+
 questionStore.onChange(getQuestionsCallback);
 completedQuestionStore.onChange(getCompletedQuestionsCallback);
 

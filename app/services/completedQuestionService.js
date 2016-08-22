@@ -1,5 +1,6 @@
 var $ = require("jquery");
 var promise = require("es6-promise");
+
 var resourceUrl = "http://localhost:7777/api/completedQuestions";
 
 module.exports = {
@@ -29,12 +30,24 @@ module.exports = {
 			});
 		});
 	},
-	deleteCompletedQueston: function(completedQuestion) {
+	deleteCompletedQuestion: function(completedQuestion) {
 		var Promise = promise.Promise;
 		return new Promise(function (resolve, reject) {
 			$.ajax({
 				url: resourceUrl + "/" + completedQuestion._id,
 				method: "DELETE",
+				dataType: "json",
+				success: resolve,
+				error: reject
+			});
+		});
+	},
+	initializeCompletedQuestions: function() {
+		var Promise = promise.Promise;
+		return new Promise(function (resolve, reject) {
+			$.ajax({
+				url: resourceUrl,
+				method: "PUT",
 				dataType: "json",
 				success: resolve,
 				error: reject

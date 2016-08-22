@@ -1,8 +1,10 @@
 var mongoose = require("mongoose");
+var fs = require("fs");
+var path = require("path");
 var Question = require("../data/questions");
 
 var router = require("express").Router();
-router.route("/questions/:id?").get(getQuestions).post(addSelectedAnswer).delete(completeQuestion);
+router.route("/questions/:id?").get(getQuestions).post(addSelectedAnswer).delete(completeQuestion).put(initializeQuestions);
 
 function getQuestions(req, res) {
 	Question.find(function (err, questions) {
@@ -39,6 +41,20 @@ function completeQuestion(req, res) {
 			res.send(err);
 		else
 			res.json(removed);
+	});
+}
+
+function initializeQuestions() {
+	Question.remove({}, function(err) {
+		if(err)
+			res.json(err);
+	});
+	
+	var initialQuestions = JSON.parse(fs.readFileSync(path.join(__dirname, "../") + "./data/Questions.json", "utf8"));
+
+	initialQuestions.forEach(function(question) {
+		var _question = new Question(question);
+		_question.save(function(err, doc) {});
 	});
 }
 

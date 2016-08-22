@@ -32,6 +32,13 @@ function QuestionStore() {
 		});
 	}
 
+	function initializeCompletedQuestions() {
+		completedQuestionService.initializeCompletedQuestions().then(function (res) {
+			console.log(res);
+			triggerListeners();
+		});
+	}
+
 	dispatcher.register(function(payload) {
 		var split = payload.type.split(":");
 		if(split[0] === "question") {
@@ -44,7 +51,8 @@ function QuestionStore() {
 	});
 
 	return {
-		onChange: onChange
+		onChange: onChange,
+		initializeCompletedQuestions: initializeCompletedQuestions
 	}
 }
 

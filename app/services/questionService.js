@@ -41,5 +41,19 @@ module.exports = {
 				error: reject
 			});
 		});
+	},
+	initializeQuestions: function() {
+		var Promise = promise.Promise;
+		
+		console.log("alkfhalkdfjlka");
+		return new Promise(function (resolve, reject) {
+			$.ajax({
+				url: resourceUrl,
+				method: "PUT",
+				dataType: "json",
+				success: resolve,
+				error: reject
+			});
+		});
 	}
 }

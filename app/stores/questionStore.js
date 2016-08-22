@@ -39,6 +39,13 @@ function QuestionStore() {
 		});
 	}
 
+	function initializeQuestions() {
+		questionService.initializeQuestions().then(function (res) {
+			console.log(res);
+			triggerListeners();
+		})
+	}
+
 	dispatcher.register(function(payload) {
 		var split = payload.type.split(":");
 		if(split[0] === "question") {
@@ -54,7 +61,8 @@ function QuestionStore() {
 	});
 
 	return {
-		onChange: onChange
+		onChange: onChange,
+		initializeQuestions: initializeQuestions
 	}
 }
 
