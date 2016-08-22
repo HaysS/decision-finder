@@ -4,6 +4,7 @@
   "description": "A site to help you figure out what you need to do, when you need to do it.",
   "main": "index.js",
   "scripts": {
+    "start": "cross-env NODE_ENV=production MONGO_URL=yourMongoURL node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,5 +31,8 @@
     "reactify": "^1.1.1",
     "underscore": "^1.8.3",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "engines": {
+    "node": "4.4.7"
   }
 }
