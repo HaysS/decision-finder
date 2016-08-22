@@ -1,5 +1,5 @@
 {
-  "name": "mood-modulator",
+  "name": "decision-finder",
   "version": "1.0.0",
   "description": "A site to help you figure out what you need to do, when you need to do it.",
   "main": "index.js",
