@@ -15,4 +15,16 @@
 	"question": "Which answer choice best describes the amount of time you slept most recently?", 
 	"answers": ["More than 9 hours", "Around 8 hours", "Around 6 hours", "Less than 5 hours"], 
 	"selectedAnswer": ""
+}, 
+{
+	"questionNum": 4, 
+	"question": "Which answer choice best describes how much time have you spent outdoors in the last 24 hours?", 
+	"answers": ["More than 6 hours", "Around 5 hours", "Around 2 hours", "Less than 1 hour"], 
+	"selectedAnswer": ""
+},
+{
+	"questionNum": 5, 
+	"question": "When was the last time you interacted with another human being?", 
+	"answers": ["Very recently", "Somewhat recently", "Not recently", "It's been a while"], 
+	"selectedAnswer": ""
 }]
