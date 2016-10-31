@@ -2,21 +2,21 @@
   "name": "decision-finder",
   "version": "1.0.0",
   "description": "A site to help you figure out what you need to do, when you need to do it.",
-  "main": "index.js",
+  "main": "app/dist/main.js",
   "scripts": {
-    "start": "node main.js",
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HaysS/mood-modulator.git"
+    "url": "git+https://github.com/HaysS/decision-finder.git"
   },
   "author": "E. Hays Stanford",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HaysS/mood-modulator/issues"
+    "url": "https://github.com/HaysS/decision-finder/issues"
   },
-  "homepage": "https://github.com/HaysS/mood-modulator#readme",
+  "homepage": "https://github.com/HaysS/decision-finder#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "browserify": "^13.1.0",

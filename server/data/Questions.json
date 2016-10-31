@@ -9,4 +9,10 @@
 	"question": "How much have you exercised today?", 
 	"answers": ["A lot", "Enough", "Not much", "None"], 
 	"selectedAnswer": ""
+},
+{
+	"questionNum": 3, 
+	"question": "Which answer choice best describes the amount of time you slept most recently?", 
+	"answers": ["More than 9 hours", "Around 8 hours", "Around 6 hours", "Less than 5 hours"], 
+	"selectedAnswer": ""
 }]
