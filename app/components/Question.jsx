@@ -2,7 +2,7 @@ var React = require("react");
 var actions = require("../actions/QuestionActions.js");
 
 module.exports = React.createClass({
-	getInitialState: function() {
+	getInitialState:function() {
 		return{
 			_id: this.props.info._id,
 			__v: this.props.info.__v,
