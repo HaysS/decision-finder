@@ -3,8 +3,7 @@ var questionStore = require("./questionStore");
 
 function QuestionListStore() {
 	var listeners = [];
-	var questionLists = [{questions: [], completedQuestions: []}];
-	var completedQuestionLists = [];
+	var questions = [];
 
 	function onChange(listener) {
 		listeners.push(listener);
@@ -14,21 +13,26 @@ function QuestionListStore() {
 		return questionLists;
 	}
 
-	function getCompletedQuestionLists() {
-		return completedQuestionLists;
-	}
+	function updateQuestionsInList(_questions) {
+		questions = [];
 
-	function updateQuestionsInList() {
-		questionLists[0].questions = [];
-		questions = questionStore.getQuestions()
-		for(var i = 0; i < questions.length; i++) {
-			questionLists[0].questions.push(questions[i]);
-		}
+		_questions.forEach(function(_q) {
+			questions.push({
+				_id: _q._id,
+				__v: _q.__v,
+				listNum: _q.listNum,
+				questionNum: _q.questionNum,
+				question: _q.question,
+				answers: _q.answers,
+				selectedAnswer: ""
+			});
+		});	
+
+		console.log(questions);	
 	}
 
 	function completeQuestion(question) {
-		console.log("dalkfjdlskf");
-		var index = questionList[0].indexOf(question);
+		
 	}
 
 	function completeQuestionList(questionList) {
@@ -40,7 +44,6 @@ function QuestionListStore() {
 		if(split[0] === "question") {
 			switch(split[1]) {
 				case "completeQuestion":
-					console.log("idafdaljkfjalksdjf");
 					completeQuestion(payload.question);
 					break;
 			}
@@ -56,7 +59,6 @@ function QuestionListStore() {
 
 	return {
 		getQuestionLists: getQuestionLists,
-		getCompletedQuestionLists: getCompletedQuestionLists,
 		updateQuestionsInList: updateQuestionsInList,
 		onChange: onChange
 	}

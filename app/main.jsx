@@ -10,6 +10,7 @@ var _completedQuestions = [];
 
 var getQuestionsCallback = function (questions) {
 	_questions = questions;
+	questionListStore.updateQuestionsInList(_questions);
 	render();
 }
 var getCompletedQuestionsCallback = function(completedQuestions) {

@@ -62,6 +62,7 @@ function QuestionStore() {
 
 	return {
 		onChange: onChange,
+		getQuestions: getQuestions,
 		initializeQuestions: initializeQuestions
 	}
 }
