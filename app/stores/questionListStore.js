@@ -4,6 +4,7 @@ var questionStore = require("./questionStore");
 function QuestionListStore() {
 	var listeners = [];
 	var questions = [];
+	var completedQuestions = [];
 
 	function onChange(listener) {
 		listeners.push(listener);
@@ -27,12 +28,12 @@ function QuestionListStore() {
 				selectedAnswer: ""
 			});
 		});	
-
-		console.log(questions);	
 	}
 
 	function completeQuestion(question) {
-		
+		//Finds index of passed question in the questions array using the _id value
+		completedQuestions.push(questions[questions.map(function (_q) { return _q._id }).indexOf(question._id)]);
+		//Did not use questions.splice() due to updateQuestionsInList reinitializing the questions array on each update
 	}
 
 	function completeQuestionList(questionList) {
