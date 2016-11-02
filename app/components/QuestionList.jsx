@@ -8,7 +8,8 @@ module.exports = React.createClass({
 			_id: this.props.info._id,
 			__v: this.props.info.__v,
 			listNum: this.props.info.listNum,
-			questions: this.props.info.questions
+			questions: this.props.info.questions,
+			completedQuestions: this.props.info.completedQuestions
 		}
 	},
 	render:function() {

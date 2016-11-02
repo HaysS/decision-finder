@@ -19,7 +19,7 @@ function QuestionStore() {
 
 	function addCompletedQuestion(question) {
 		completedQuestionService.addCompletedQuestion(question).then(function (res) {
-			console.log(res);
+			//console.log(res);
 			triggerListeners();
 		});
 	}

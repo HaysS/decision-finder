@@ -26,7 +26,7 @@ function QuestionStore() {
 
 	function deleteQuestion(question) {
 		questionService.deleteQuestion(question).then(function (res) {
-			console.log(res);
+			//console.log(res);
 			triggerListeners();
 		})
 	}
