@@ -12,11 +12,15 @@ module.exports = React.createClass({
 			completedQuestions: this.props.info.completedQuestions
 		}
 	},
+	completeQuestionList:function(event) {
+		event.preventDefault();
+		actions.completeQuestionList(this.state);
+	},
 	render:function() {
 		var finishButton;
 		
 		if(this.props.info.questions.length == 0) {
-			finishButton = <button type="button" onClick={actions.completeQuestionList(this.state)} className="btn btn-primary btn-lg btn-block">Finish</button>
+			finishButton = <a onClick={this.completeQuestionList} className="btn btn-primary btn-lg btn-block">Finish</a>
 		}
 
 		return(

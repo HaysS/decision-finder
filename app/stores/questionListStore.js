@@ -37,7 +37,7 @@ function QuestionListStore() {
 	}
 
 	function completeQuestionList(questionList) {
-		
+		console.log("completeQuestionList called");
 	}
 
 	dispatcher.register(function(payload) {
