@@ -1,5 +1,5 @@
 var React = require("react");
-var QuestionList = require("./QuestionList.jsx");
+var Question = require("./Question.jsx");
 
 module.exports = React.createClass({
 	render:function() {
@@ -9,7 +9,13 @@ module.exports = React.createClass({
 			
 				</div>
 				<div className="col-lg-10">
-					<QuestionList info={this.props.info.questionLists} key={"list1"} />
+					{
+						this.props.info.questions.map(function(q) {
+							return(
+									<Question info={q} key={"question"+q.questionNum} />
+							)
+						})
+					}
 				</div>
 			</div>
 		)
