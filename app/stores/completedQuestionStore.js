@@ -2,12 +2,22 @@ var dispatcher = require("../dispatcher");
 var questionService = require("../services/questionService");
 var completedQuestionService = require("../services/completedQuestionService");
 
-function QuestionStore() {
+function completedQuestionStore() {
 	var listeners = [];
 
 	function onChange(listener) {
 		getCompletedQuestions(listener);
 		listeners.push(listener);
+	}
+
+	function getResults() {
+		var _completedQuestions = [];
+		var cb = function(completedQuestions) {_completedQuestions = completedQuestions;}
+		getCompletedQuestions(cb);
+
+		console.log(_completedQuestions);
+
+		return _completedQuestions;
 	}
 
 	function getCompletedQuestions(cb) {
@@ -51,9 +61,10 @@ function QuestionStore() {
 	});
 
 	return {
+		getResults: getResults,
 		onChange: onChange,
 		initializeCompletedQuestions: initializeCompletedQuestions
 	}
 }
 
-module.exports = QuestionStore();
+module.exports = completedQuestionStore();

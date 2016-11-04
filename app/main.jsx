@@ -23,9 +23,10 @@ completedQuestionStore.initializeCompletedQuestions();
 questionStore.onChange(getQuestionsCallback);
 completedQuestionStore.onChange(getCompletedQuestionsCallback);
 
-function render(){
+function render() {
 	if(_questions.length > 0)
 		ReactDOM.render(<Survey info={{questions: _questions}} />, document.getElementById("container"));	
-	else if(_questions.length == 0)
-		ReactDOM.render(<Results info={{comletedQuestions: _completedQuestions}} />, document.getElementById("container"));
+	else if(_questions.length == 0) {
+		ReactDOM.render(<Results info={{results: completedQuestionStore.getResults()}} />, document.getElementById("container"));
+	}
 }

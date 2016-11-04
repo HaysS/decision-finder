@@ -17,6 +17,7 @@ function getCompletedQuestions(req, res) {
 
 function addCompletedQuestion(req, res) {
 	var completedQuestion = new CompletedQuestion(_.extend({}), req.body);
+	completedQuestion.resultValue = 43;	//Testing
 	completedQuestion.save(function(err) {
 		if(err) 
 			res.send(err);

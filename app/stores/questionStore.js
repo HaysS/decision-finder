@@ -1,6 +1,5 @@
 var dispatcher = require("../dispatcher");
 var questionService = require("../services/questionService");
-var completedQuestionStore = require("./completedQuestionStore");
 
 function QuestionStore() {
 	var listeners = [];
@@ -19,7 +18,7 @@ function QuestionStore() {
 
 	function addSelectedAnswer(question) {
 		questionService.addSelectedAnswer(question).then(function (res) {
-			console.log(res);
+			//console.log(res);
 			triggerListeners();
 		});
 	}
@@ -41,7 +40,7 @@ function QuestionStore() {
 
 	function initializeQuestions() {
 		questionService.initializeQuestions().then(function (res) {
-			console.log(res);
+			//console.log(res);
 			triggerListeners();
 		})
 	}
