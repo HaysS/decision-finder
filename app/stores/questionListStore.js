@@ -1,5 +1,4 @@
 var dispatcher = require("../dispatcher");
-var questionStore = require("./questionStore");
 
 function QuestionListStore() {
 	var listeners = [];
@@ -30,14 +29,14 @@ function QuestionListStore() {
 		});	
 	}
 
-	function completeQuestion(question) {
+	function completeQuestion(_question) {
 		//Finds index of passed question in the questions array using the _id value
-		completedQuestions.push(questions[questions.map(function (_q) { return _q._id }).indexOf(question._id)]);
-		//Did not use questions.splice() due to updateQuestionsInList reinitializing the questions array on each update
+		completedQuestions.push(questions[questions.map(function (_q) { return _q._id }).indexOf(_question._id)]);
+		//Did not use questions.splice() due to updateQuestionsInList() reinitializing the questions array on each update
 	}
 
 	function completeQuestionList(questionList) {
-		console.log("completeQuestionList called");
+		//completedQuestions.selectedAnswer
 	}
 
 	dispatcher.register(function(payload) {
