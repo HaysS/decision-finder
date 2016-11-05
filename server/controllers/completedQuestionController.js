@@ -16,8 +16,9 @@ function getCompletedQuestions(req, res) {
 }
 
 function addCompletedQuestion(req, res) {
-	var completedQuestion = new CompletedQuestion(_.extend({}), req.body);
-	completedQuestion.resultValue = 43;	//Testing
+	var completedQuestion = new CompletedQuestion(_.extend(req.body));
+	completedQuestion.resultValue = completedQuestion.selectedAnswer.replace( /^\D+/g, ''); 
+	
 	completedQuestion.save(function(err) {
 		if(err) 
 			res.send(err);
