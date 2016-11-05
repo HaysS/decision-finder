@@ -27,6 +27,6 @@ function render() {
 	if(_questions.length > 0)
 		ReactDOM.render(<Survey info={{questions: _questions}} />, document.getElementById("container"));	
 	else if(_questions.length == 0) {
-		ReactDOM.render(<Results info={{results: completedQuestionStore.getResults()}} />, document.getElementById("container"));
+		ReactDOM.render(<Results info={{completedQuestions: _completedQuestions}} />, document.getElementById("container"));
 	}
 }

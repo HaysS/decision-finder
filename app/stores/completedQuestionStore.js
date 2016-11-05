@@ -10,16 +10,6 @@ function completedQuestionStore() {
 		listeners.push(listener);
 	}
 
-	function getResults() {
-		var _completedQuestions = [];
-		var cb = function(completedQuestions) {_completedQuestions = completedQuestions;}
-		getCompletedQuestions(cb);
-
-		console.log(_completedQuestions);
-
-		return _completedQuestions;
-	}
-
 	function getCompletedQuestions(cb) {
 		completedQuestionService.getCompletedQuestions().then(function(res) {
 			console.log("CompletedQuestions: " + res);
@@ -32,6 +22,7 @@ function completedQuestionStore() {
 			//console.log(res);
 			triggerListeners();
 		});
+
 	}
 
 	function triggerListeners() {
@@ -61,7 +52,6 @@ function completedQuestionStore() {
 	});
 
 	return {
-		getResults: getResults,
 		onChange: onChange,
 		initializeCompletedQuestions: initializeCompletedQuestions
 	}
