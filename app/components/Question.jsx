@@ -6,7 +6,6 @@ module.exports = React.createClass({
 		return{
 			_id: this.props.info._id,
 			__v: this.props.info.__v,
-			listNum: this.props.info.listNum,
 			questionNum: this.props.info.questionNum,
 			question: this.props.info.question,
 			answers: this.props.info.answers,
